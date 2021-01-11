@@ -1,0 +1,26 @@
+		.text
+
+		addu 	$s0,$zero,$zero 		
+		addu 	$s1,$zero,$zero 		
+		addiu 	$v0,$zero,5 			
+		syscall 						
+		sw 		$v0,n($gp) 				
+ 	lw 		$s2,n($gp) 				
+		slt 	$t0,$s1,$s2 			
+		beq 	$t0,$zero,L2 			
+		addiu 	$v0,$zero,5 			
+		syscall 						
+		addu 	$s0,$s0,$v0 			
+		addiu 	$s1,$s1,1				
+		j 		L1 						
+		addu 	$a0,$s0,$zero 			
+		addiu 	$v0,$zero,1 			
+		syscall 						
+		addiu 	$v0,$zero,10 			
+		syscall 						
+		mult	$t2,$t3					
+		mflo	$s4						
+		sw		$s2,n					
+
+		.data
+
